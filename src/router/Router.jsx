@@ -1,14 +1,20 @@
 import React from 'react'
-import { useRoutes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { publicRoutes } from './routes'
 
 const Router = () => {
-    const routes = useRoutes(publicRoutes)
     return (
         <main className="main">
-            {routes}
+            <Routes>
+                {publicRoutes.map(({path, element}) =>
+                    <Route
+                        key={path}
+                        path={path}
+                        element={element}
+                    />
+                )}
+            </Routes>
         </main>
-
     )
 }
 
